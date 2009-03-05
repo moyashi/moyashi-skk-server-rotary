@@ -1,0 +1,10 @@
+moyashi-skk-server-rotary.elの内容を環境に合わせて書き換えつつ.emacs.elに貼るか、(load "moyashi-skk-server-rotary")する。
+
+com.moyashi.socialskk.plistの内容、特にProgramArgumentsを環境に合わせて書き換え、/System/Library/LaunchDaemons/にコピー。
+
+sudo launchctl load -w /System/Library/LaunchDaemons/com.moyashi.socialskk.plist
+
+とすれば、バックグラウンドでsocialskkが起動開始。次回の起動時も自動起動する。
+自動起動を止めたければ、以下のようにする。
+
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.moyashi.socialskk.plist
