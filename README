@@ -1,10 +1,18 @@
-moyashi-skk-server-rotary.elの内容を環境に合わせて書き換えつつ.emacs.elに貼るか、(load "moyashi-skk-server-rotary")する。
+/* moyashi-skk-server-rotary.elのインストール */
 
-com.moyashi.socialskk.plistの内容、特にProgramArgumentsを環境に合わせて書き換え、/System/Library/LaunchDaemons/にコピー。
+「moyashi-skk-server-rotary.el」の内容を環境に合わせて書き換えた上で「.emacs.el」に
+貼るか、load-pathの通ったところに置いて、「.emacs.el」で以下のように読み込む。
+
+(load "moyashi-skk-server-rotary")
+
+/* Mac OS Xでsocialskk.rbをdaemonとして起動させる */
+
+com.moyashi.socialskk.plistの内容、特にProgramArgumentsを環境に合わせて
+書き換え、「/System/Library/LaunchDaemons/」にコピー。ターミナルから以下のように実行。
 
 sudo launchctl load -w /System/Library/LaunchDaemons/com.moyashi.socialskk.plist
 
-とすれば、バックグラウンドでsocialskkが起動開始。次回の起動時も自動起動する。
+直後からバックグラウンドでsocialskk.rbが起動開始。次回の起動時においても自動起動する。
 自動起動を止めたければ、以下のようにする。
 
 sudo launchctl unload -w /System/Library/LaunchDaemons/com.moyashi.socialskk.plist
