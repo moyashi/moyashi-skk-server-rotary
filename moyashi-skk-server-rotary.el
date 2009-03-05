@@ -1,0 +1,27 @@
+(defun moyashi-skk-server-rotary()
+  (interactive)
+  (defvar moyashi-skk-server-rotary-status 0)
+  (cond ((equal moyashi-skk-server-rotary-status 0)
+		 (progn
+		   (setq skk-large-jisyo "~/src/skk/dic/SKK-JISYO.L")
+		   (setq skk-server-host nil)
+		   (setq skk-server-portnum nil)
+		   (setq moyashi-skk-server-rotary-status 1)
+		   (message "SKK setting switch to: SKK-JISYO.L")))
+		((equal moyashi-skk-server-rotary-status 1)
+		 (progn
+		   (setq skk-large-jisyo nil)
+		   (setq skk-server-host "localhost")
+		   (setq skk-server-portnum 55100)
+		   (setq moyashi-skk-server-rotary-status 2)
+		   (message "SKK setting switch to: socialskk.rb")))
+		((equal moyashi-skk-server-rotary-status 2)
+		 (progn
+		   (setq skk-large-jisyo nil)
+		   (setq skk-server-host "localhost")
+		   (setq skk-server-portnum 55200)
+		   (setq moyashi-skk-server-rotary-status 0)
+		   (message "SKK setting switch to: skkserv2")))
+		))
+(global-set-key "\C-xnj" 'moyashi-skk-server-rotary)
+
